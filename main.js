@@ -11,6 +11,8 @@ myButton.addEventListener('click',()=>{
                 let xmlDOC = parser.parseFromString(request.responseText,"text/xml");
                 let body = xmlDOC.getElementsByTagName('body')[0].textContent
                 console.log(body)
+            }else if(request.status >= 400){
+                console.log('说明请求失败')
             }
         }
     }
