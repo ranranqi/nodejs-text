@@ -36,6 +36,9 @@ var server = http.createServer(function(request,response){
     }else if(path === '/xxx'){
         response.statusCode = 200
         response.setHeader('Content-Type','text/json;charset=utf-8')
+        /********在frank.com下访问jack.com    使用AJAX 跨域 后端需要添加的代码
+        response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
+        意为告诉浏览器frank.com是一家的不要阻止访问*********/
         response.write(`
         {
             "note":{

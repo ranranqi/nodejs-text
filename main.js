@@ -1,6 +1,6 @@
 myButton.addEventListener('click',()=>{
     let request = new XMLHttpRequest()
-    request.open('PUT','/xxx')
+    request.open('GET','http://jack.com:8002/xxx')
     request.send()
     request.onreadystatechange = ()=>{
         if(request.readyState === 4){
