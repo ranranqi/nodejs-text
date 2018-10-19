@@ -35,14 +35,16 @@ var server = http.createServer(function(request,response){
         response.end()
     }else if(path === '/xxx'){
         response.statusCode = 200
-        response.setHeader('Content-Type','text/xml;charset=utf-8')
+        response.setHeader('Content-Type','text/json;charset=utf-8')
         response.write(`
-        <note>
-            <to>小谷</to>
-            <from>方方</from>
-            <heading>打招呼</heading>
-            <body>你好啊</body>
-        </note>
+        {
+            "note":{
+                "to": "小谷",
+                "from": "方方",
+                "heading": "打招呼",
+                "body": "你好啊"
+            }   
+        }
         `)
         response.end()
     }else{
