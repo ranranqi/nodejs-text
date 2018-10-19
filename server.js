@@ -9,7 +9,7 @@ if(!port){
 }
 
 var server = http.createServer(function(request,response){
-    var parsedUrl = url.parse(request.url,ture)
+    var parsedUrl = url.parse(request.url,true)
     var pathWithQuery = request.url
     var queryString = ''
     if(pathWithQuery.indexOf('?') >= 0){queryString = pathWithQuery.substring(pathWithQuery.indexOf('?'))}
