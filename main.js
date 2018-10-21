@@ -6,17 +6,8 @@ window.jQuery = function(nodeOrSelector){
 }
 
 
-window.jQuery.ajax = function(options){
-    let url = options.url
-    let method = options.method
-    let body = options.body
-    let successFn = options.successFn
-    let failFn = options.failFn
-    let headers = options.headers
-    /***** ES6 解构赋值 等价于上面6行
-    let {url,method,body,successFn,failFn,headers} = options  *****/
-    
-
+window.jQuery.ajax = function({url,method,body,successFn,failFn,headers}){
+   
     let request = new XMLHttpRequest()
     request.open(method,url)
     for(let key in headers){ // 遍历headers
