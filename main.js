@@ -7,12 +7,19 @@ window.jQuery = function(nodeOrSelector){
 
 
 window.jQuery.ajax = function(options){
-    let url = options.url
+    let url
+    if(arguments.length === 1){
+        url = options.url
+    }else if(arguments.length === 2){
+        url = arguments[0]
+        options = arguments[1]
+    }
     let method = options.method
     let body = options.body
     let successFn = options.successFn
     let failFn = options.failFn
     let headers = options.headers
+    
 
     let request = new XMLHttpRequest()
     request.open(method,url)
