@@ -34,14 +34,15 @@ function f1(responseText){}
 function f2(responseText){}
 
 myButton.addEventListener('click',(e)=>{
-    window.jQuery.ajax({
+    let promise = window.jQuery.ajax({
         url: '/xxx',
         method: 'get',
         headers: {
             'content-type':'application/x-www-form-urlencoded',
             'frank':'18'
         }      
-    }).then(
+    })
+    promise.then(
         (text)=>{
             console.log(text)
         },
