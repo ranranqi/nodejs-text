@@ -7,18 +7,14 @@ window.jQuery = function(nodeOrSelector){
 
 
 window.jQuery.ajax = function(options){
-    let url
-    if(arguments.length === 1){
-        url = options.url
-    }else if(arguments.length === 2){
-        url = arguments[0]
-        options = arguments[1]
-    }
+    let url = options.url
     let method = options.method
     let body = options.body
     let successFn = options.successFn
     let failFn = options.failFn
     let headers = options.headers
+    /***** ES6 解构赋值 等价于上面6行
+    let {url,method,body,successFn,failFn,headers} = options  *****/
     
 
     let request = new XMLHttpRequest()
