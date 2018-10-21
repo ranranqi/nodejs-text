@@ -30,11 +30,16 @@ window.jQuery.ajax = function(options){
 window.$ = window.jQuery
 
 myButton.addEventListener('click',(e)=>{
-    let obj = {
-        url: '/xxx',
+    window.jQuery.ajax({
+        url: '/frank',
         method: 'get',
-        successFn: ()=>{},
-        failFn: ()=>{}
-    }
-    window.jQuery.ajax(obj)
+        successFn: (x)=>{  //这儿函数里的参数 x 就是request.responseText。 是一个callback回调函数
+            console.log(x)  
+        }, 
+        failFn: (x)=>{  //这儿的 x 就是request。 是一个callback回调函数
+            console.log(x)
+            console.log(x.status)
+            console.log(x.responseText)   
+        }   
+    })
 })
