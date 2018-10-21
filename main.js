@@ -1,20 +1,52 @@
+window.jQuery = function(nodeOrSelector){
+    let nodes = {}
+    nodes.addClass = function(){}
+    nodes.html = function(){}
+    return nodes
+}
+
+
+window.jQuery.ajax = function({url,method,body,headers}){
+    return new Promise(function(resolve,reject){
+        let request = new XMLHttpRequest()
+        request.open(method,url)
+        for(let key in headers){ // 遍历headers
+            let value = headers[key]
+            request.setRequestHeader(key,value)
+        }
+        request.onreadystatechange = ()=>{
+            if(request.readyState === 4){
+                if(request.status >= 200 && request.status < 300){
+                    resolve.call(undefined,request.responseText)
+                }else if(request.status >= 400){
+                    reject.call(undefined,request)
+                }
+            }
+        }
+        request.send(body) 
+    })
+}
+
+window.$ = window.jQuery
+
+
+function f1(responseText){}
+function f2(responseText){}
+
 myButton.addEventListener('click',(e)=>{
-    $.ajax({
+    window.jQuery.ajax({
         url: '/xxx',
-        type: 'get',   
+        method: 'get',
+        headers: {
+            'content-type':'application/x-www-form-urlencoded',
+            'frank':'18'
+        }      
     }).then(
-        (responseText)=>{
-            console.log(responseText);
-            return responseText
+        (text)=>{
+            console.log(text)
         },
         (request)=>{
-            console.log('error1');return '已经处理'}
-        ).then(
-            (上一次的处理结果)=>{
-                console.log(上一次的处理结果)
-            },
-            (request)=>{
-                console.log('error2')
-            }
-        )
+            console.log(request)
+        }
+    )
 })
