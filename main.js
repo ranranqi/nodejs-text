@@ -6,7 +6,13 @@ window.jQuery = function(nodeOrSelector){
 }
 
 
-window.jQuery.ajax = function(url,method,body,successFn,failFn){
+window.jQuery.ajax = function(options){
+    let url = options.url
+    let method = options.method
+    let body = options.body
+    let successFn = options.successFn
+    let failFn = options.failFn
+
     let request = new XMLHttpRequest()
     request.open(method,url)
     request.onreadystatechange = ()=>{
@@ -24,11 +30,11 @@ window.jQuery.ajax = function(url,method,body,successFn,failFn){
 window.$ = window.jQuery
 
 myButton.addEventListener('click',(e)=>{
-    window.jQuery.ajax(
-        '/xxx',
-        'post',
-        'a=1&b=2',
-        (responseText)=>{ console.log(responseText) },
-        (request)=>{ console.log(2) }
-    )
+    let obj = {
+        url: '/xxx',
+        method: 'get',
+        successFn: ()=>{},
+        failFn: ()=>{}
+    }
+    window.jQuery.ajax(obj)
 })
